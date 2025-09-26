@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
-import * as sgTransport from 'nodemailer-sendgrid';
+import sgTransport from 'nodemailer-sendgrid';
 
 @Injectable()
 export class MailerService {
@@ -9,7 +9,7 @@ export class MailerService {
   constructor() {
     this.transporter = nodemailer.createTransport(
       sgTransport({
-        apiKey: process.env.SENDGRID_API_KEY, // Use your SendGrid API key here
+        apiKey: `${process.env.SENDGRID_API_KEY}`, // Use your SendGrid API key here
       }),
     );
   }
