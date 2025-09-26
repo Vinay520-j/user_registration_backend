@@ -17,11 +17,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
     TypeOrmModule.forRoot({
      type:'mysql',
-     host: 'localhost',
+     host: 'mysql.railway.internal',
+     url: process.env.MYSQL_URL,
      port: 3306,
      username:'root',
-     password:'123456',
-     database:'user_registration',
+     password:'jswsSBqpDvpbAKrlYENvjCBUdFbCdqCV',
+     database:'railway',
      entities:[User],
      synchronize:true,
 
