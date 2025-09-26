@@ -7,7 +7,7 @@ export class MailerService {
 
   constructor() {
     this.transporter = nodemailer.createTransport({
-      service: 'smtp.sendgrid.net',
+      service: 'SendGrid',
       auth: {
         user:process.env.MAIL_USER, 
         pass:process.env.MAIL_PASS, 
