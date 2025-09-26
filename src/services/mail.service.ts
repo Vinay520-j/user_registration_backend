@@ -7,9 +7,7 @@ export class MailerService {
 
   constructor() {
     this.transporter = nodemailer.createTransport({
-      service: 'gmail',
-      port: 587,
-      secure:true, 
+      service: 'smtp.sendgrid.net',
       auth: {
         user:process.env.MAIL_USER, 
         pass:process.env.MAIL_PASS, 
@@ -23,10 +21,6 @@ export class MailerService {
       subject,
       text,
     })
-    console.log( {
-        user:process.env.MAIL_USER, 
-        pass:process.env.MAIL_PASS, 
-      },)
     await this.transporter.sendMail({
       from:process.env.MAIL_USER,
       to,
