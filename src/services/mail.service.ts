@@ -1,17 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import * as nodemailer from 'nodemailer';
-import sgTransport from 'nodemailer-sendgrid';
 
 @Injectable()
 export class MailerService {
-  private transporter: any;
+  private transporter:any;
 
   constructor() {
-    this.transporter = nodemailer.createTransport(
-      sgTransport({
-        apiKey: `${process.env.SENDGRID_API_KEY}`, // Use your SendGrid API key here
-      }),
-    );
+    this.transporter = nodemailer.createTransport({
+      service: 'gmail',
+      port: 587,
+      secure:true, 
+      auth: {
+        user:process.env.MAIL_USER, 
+        pass:process.env.MAIL_PASS, 
+      },
+    });
   }
 
   async sendMail(to: string, subject: string, text: string) {
@@ -19,10 +22,9 @@ export class MailerService {
       to,
       subject,
       text,
-    });
-
+    })
     await this.transporter.sendMail({
-      from: process.env.MAIL_FROM, 
+      from:process.env.MAIL_USER,
       to,
       subject,
       text,
