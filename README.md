@@ -14,11 +14,17 @@ Before running the project, ensure you have:
 - [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) (optional GUI)  
 - [Git](https://git-scm.com/) installed  
 
----
+--
 
-## 🛠 Local Setup
+#npm install
 
-### 1️⃣ Clone the Repository
-```bash
-git clone <your-repo-url>
-cd <your-project-folder>
+#Add the .env file
+ -jwt_secret
+ -MAIL_USER
+ -MAIL_PASS
+ -MYSQL_URL
+ -SENDGRID_API_KEY
+ -MAIL_FROM
+
+#Update the local setup in app.module.ts
+
